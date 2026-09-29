@@ -1,7 +1,7 @@
 // ============================================================================
 //  홈페이지 코드 설정 — 관리자 페이지가 아니라 "여기서 직접" 수정하는 항목들
 //
-//  · 롤링 슬라이드(SLIDES)   · 포스터(POSTER)   · 배너 박스(BANNER)
+//  · 롤링 슬라이드(SLIDES)   · 포스터(POSTER)   · 배너 슬라이드(BANNERS)
 //  · 홍보 배너(PROMO)        · 사이트 정보(SITE, 헤더/푸터/과목탭/소셜)
 //
 //  이미지는 public/ 폴더에 넣고 "/파일명" 경로로 적으면 됩니다.
@@ -28,8 +28,23 @@ export const POSTER: Poster = {
   active: true,
 };
 
-/* ── 롤링창·포스터 바로 밑: 배너 박스 (이미지 하나로 교체) ─────────────────── */
-export const BANNER: Promo = { image: "/banner.png", href: "/events", alt: "2027 윈터스쿨 & 입시설명회 예약하기" };
+/* ── 롤링창·포스터 바로 밑: 배너 슬라이드 (위에서부터 순서대로 재생) ──────────
+   image = PC용(1956×168), mobileImage = 모바일용(1080×320)
+   href 를 비우면("") 클릭해도 이동하지 않습니다. 외부 링크는 새 창으로 열립니다. */
+export const BANNERS: Promo[] = [
+  {
+    image: "/banner-open-pc.png",
+    mobileImage: "/banner-open-mo.png",
+    href: "",
+    alt: "5A 수원정자점 GRAND OPEN!",
+  },
+  {
+    image: "/banner-seminar-pc.png",
+    mobileImage: "/banner-seminar-mo.png",
+    href: "https://forms.gle/o2jUEqJEyt9U9u2m8",
+    alt: "2027 윈터스쿨 & 학년별 입시전략 설명회 — 2026.10.11(일) 오후 2시, 롯데시네마 북수원점 1관 · 설명회 신청하기",
+  },
+];
 
 /* ── 영상 섹션 우측 하단: 홍보 사각배너 ───────────────────────────────────── */
 export const PROMO: Promo = {
