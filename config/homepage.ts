@@ -12,6 +12,14 @@
 
 import type { Slide, Poster, Promo, SiteSettings } from "@/lib/types";
 
+/* ── 단과시간표 · 브로셔 공개 스위치 ─────────────────────────────────────────
+   SCHEDULE_READY = false → 단과시간표 · 강좌 상세 · 선생님 "개설 강좌" 모두 "준비 중" 표시
+   BROCHURE = null        → 단과시간표 상단 PDF(바로보기·다운로드) 숨김
+   수원점 시간표/브로셔가 준비되면 true / { title, file } 로 바꾸세요. */
+export const SCHEDULE_READY = false;
+export const BROCHURE: { title: string; file: string } | null = null;
+// 예) export const BROCHURE = { title: "10월 단과 안내 PDF", file: "/2026-10-schedule-brochure.pdf" };
+
 /* ── 히어로 왼쪽: 롤링 슬라이드 (위에서부터 순서대로 재생) ────────────────── */
 export const SLIDES: Slide[] = [
   { id: "s1", image: "/hero-2.png", href: "/admission/winter", alt: "2027 윈터스쿨", order: 1, active: true },

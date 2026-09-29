@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTeachers } from "@/lib/content";
-import { SITE } from "@/config/homepage";
+import { SITE, SCHEDULE_READY } from "@/config/homepage";
 import TeacherDetail from "@/app/components/teachers/TeacherDetail";
 
 export const dynamic = "force-dynamic";
@@ -73,7 +73,7 @@ export default async function TeacherViewPage({
           current={current}
           subjects={SITE.subjects}
           activeSubject={activeSubject}
-          courses={courses}
+          courses={SCHEDULE_READY ? courses : []}
         />
       </div>
     </main>

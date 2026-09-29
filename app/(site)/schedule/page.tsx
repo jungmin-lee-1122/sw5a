@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCourses } from "@/lib/content";
 import { SCHEDULE_TABS } from "@/lib/types";
-import { SITE } from "@/config/homepage";
+import { SITE, SCHEDULE_READY, BROCHURE } from "@/config/homepage";
 import CategoryTabs from "@/app/components/schedule/CategoryTabs";
 import CourseTable from "@/app/components/schedule/CourseTable";
 import AdmissionTabs from "@/app/components/admission/AdmissionTabs";
@@ -27,7 +27,7 @@ export default async function SchedulePage({
   const SUBJECTS = ["전체", ...SITE.subjects];
   const activeSubject = subject && SITE.subjects.includes(subject) ? subject : "전체";
 
-  let list = (await getAllCourses()).filter((c) => (c.target ?? []).some((t) => tab.targets.includes(t)));
+  let list = SCHEDULE_READY ? (await getAllCourses()).filter((c) => (c.target ?? []).some((t) => tab.targets.includes(t))) : [];
   if (activeSubject !== "전체") list = list.filter((c) => c.subject === activeSubject);
 
   return (
@@ -48,14 +48,15 @@ export default async function SchedulePage({
               <p className="mt-2 text-sm text-muted">모집대상과 과목으로 원하는 강좌를 찾아보세요.</p>
             </div>
 
-            {/* 9월 단과 브로셔 — 바로보기 · 다운로드 */}
+            {/* 단과 브로셔 — 바로보기 · 다운로드 (config/homepage.ts 의 BROCHURE 가 있을 때만) */}
+            {BROCHURE && (
             <div className="flex items-center gap-3 rounded-2xl border border-brand/15 bg-white/70 p-2.5 pl-4 shadow-[0_4px_16px_rgba(30,42,99,0.08)] backdrop-blur">
               <div className="mr-1 leading-tight">
-                <p className="text-[16px] font-bold text-ink sm:text-[17px]">9월 단과 안내 PDF</p>
+                <p className="text-[16px] font-bold text-ink sm:text-[17px]">{BROCHURE.title}</p>
               </div>
               <div className="flex gap-1.5">
                 <a
-                  href="/2026-09-schedule-brochure.pdf"
+                  href={BROCHURE.file}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-lg bg-brand px-3.5 py-2 text-[13px] font-bold text-white transition-colors hover:bg-brand-dark"
@@ -63,7 +64,7 @@ export default async function SchedulePage({
                   바로보기
                 </a>
                 <a
-                  href="/2026-09-schedule-brochure.pdf"
+                  href={BROCHURE.file}
                   download
                   className="inline-flex items-center gap-1 rounded-lg border border-line bg-white px-3 py-2 text-[13px] font-semibold text-gray-700 transition-colors hover:border-brand/40 hover:text-brand"
                 >
@@ -75,6 +76,7 @@ export default async function SchedulePage({
                 </a>
               </div>
             </div>
+            )}
           </div>
         </div>
       </div>
@@ -85,6 +87,8 @@ export default async function SchedulePage({
         {/* 모집대상 탭 */}
         <CategoryTabs active={active} />
 
+        {SCHEDULE_READY ? (
+          <>
         {/* 과목 필터 */}
         <div className="mt-5 flex flex-wrap items-center gap-2">
           <span className="mr-1 text-sm font-semibold text-gray-400">과목</span>
@@ -113,6 +117,13 @@ export default async function SchedulePage({
         <div className="mt-7">
           <CourseTable courses={list} />
         </div>
+          </>
+        ) : (
+          <div className="mt-7 rounded-2xl border border-dashed border-line bg-gray-50 px-6 py-16 text-center">
+            <p className="text-lg font-bold text-ink">{active} 시간표 준비 중입니다</p>
+            <p className="mt-2 text-sm text-muted">수원점 단과 시간표는 곧 안내해 드리겠습니다.</p>
+          </div>
+        )}
       </div>
     </main>
   );

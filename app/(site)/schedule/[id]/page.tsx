@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllCourses, getTeachers } from "@/lib/content";
+import { SCHEDULE_READY } from "@/config/homepage";
 import { SCHEDULE_TABS } from "@/lib/types";
 import CategoryTabs from "@/app/components/schedule/CategoryTabs";
 import ZoomableImage from "@/app/components/schedule/ZoomableImage";
@@ -39,7 +40,7 @@ export default async function CourseDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const course = await findCourse(id);
+  const course = SCHEDULE_READY ? await findCourse(id) : null;
   if (!course) notFound();
 
   const teacher = (await getTeachers()).find((t) => t.id === course.teacherId);
