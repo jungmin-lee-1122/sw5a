@@ -4,7 +4,7 @@ import LocationMap from "@/app/components/about/NaverMap";
 
 export const metadata: Metadata = {
   title: "오시는 길 | 5A 아카데미",
-  description: "5A 아카데미 평촌점 오시는 길 — 위치, 버스·지하철 안내",
+  description: "5A 아카데미 수원점 오시는 길 — 위치, 버스·지하철 안내",
 };
 
 const GENERAL_BUS = ["1", "3", "52-1", "52", "5-2", "22"];

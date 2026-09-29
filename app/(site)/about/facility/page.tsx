@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "시설안내 | 5A 아카데미",
-  description: "5A 아카데미 평촌점 시설 안내 — 강의실, 자습실, 상담실, 옥상정원 등",
+  description: "5A 아카데미 수원점 시설 안내 — 강의실, 자습실, 상담실, 옥상정원 등",
 };
 
 const FACILITIES: { src: string; name: string; desc: string }[] = [

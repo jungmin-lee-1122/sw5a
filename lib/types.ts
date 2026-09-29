@@ -33,7 +33,7 @@ export interface StatItem {
 
 /** 합격실적 배너 (단일 설정) */
 export interface Stats {
-  brand: string;      // 예: "러셀 평촌"
+  brand: string;      // 예: "러셀 수원"
   title: string;      // 예: "대입 합격 결과"
   note: string;       // 예: "데이터 산출 기준"
   items: StatItem[];
@@ -137,7 +137,7 @@ export interface EventItem {
   // ── 상세 페이지용 (모두 선택 항목) ────────────────────────────────
   summary?: string;    // 목록/상단에 보이는 한 줄 요약
   eventDate?: string;  // 실제 일시 (예: "2026.09.20(일) 14:00~16:00")
-  location?: string;   // 장소 (예: "평촌 롯데백화점 문화홀")
+  location?: string;   // 장소 (예: "수원점 세미나실")
   targets?: string;    // 대상 (자유 입력, 최대 50자. 예: "현 고1, 현 고2") — 구버전 배열 데이터도 허용
   status?: EventStatus; // 접수중 / 접수예정 / 마감
   intro?: string;      // 소개 문단 (줄바꿈으로 여러 문단)

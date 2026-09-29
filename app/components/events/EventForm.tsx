@@ -302,7 +302,7 @@ export default function EventForm({ event }: { event: EventItem }) {
             <input
               value={f.school}
               onChange={(e) => set("school", e.target.value)}
-              placeholder="예) 평촌고등학교"
+              placeholder="예) 수원고등학교"
               className={fieldCls}
             />
           </div>

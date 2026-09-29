@@ -14,7 +14,7 @@ export default function Page() {
         { key: "status", label: "접수 상태", type: "text", placeholder: "접수중 / 접수예정 / 마감" },
         { key: "summary", label: "한 줄 요약", type: "text", placeholder: "목록·상단에 보이는 짧은 설명" },
         { key: "eventDate", label: "일시", type: "text", placeholder: "2026.09.20(일) 14:00~16:00" },
-        { key: "location", label: "장소", type: "text", placeholder: "평촌 롯데백화점 식품관 2층 문화홀" },
+        { key: "location", label: "장소", type: "text", placeholder: "예: 수원점 세미나실" },
         {
           key: "targets",
           label: "대상",

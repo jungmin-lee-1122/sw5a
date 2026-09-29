@@ -10,7 +10,7 @@ export default function Page() {
       fields={[
         { key: "year", label: "학년도", type: "text", placeholder: "예: 2026학년도" },
         { key: "name", label: "이름", type: "text", placeholder: "예: 김O민" },
-        { key: "school", label: "출신고교", type: "text", placeholder: "예: 평촌고" },
+        { key: "school", label: "출신고교", type: "text", placeholder: "예: 수원고" },
         { key: "metric", label: "지표명", type: "text", placeholder: "예: 국수탐 백분위" },
         { key: "beforeLabel", label: "이전 라벨", type: "text", placeholder: "예: 2025 수능" },
         { key: "afterLabel", label: "이후 라벨", type: "text", placeholder: "예: 2026 수능" },

@@ -63,7 +63,7 @@ export default function AboutResults() {
 
           <p className="mt-5 text-[15px] leading-relaxed text-gray-600" style={up(220)}>
             지난 4년간 최상위권 대학 합격 실적을 기록하며 대한민국 최고 수준의 성과를 만들어 왔습니다. 이는
-            학부모님의 신뢰와 5A 학생들의 노력 덕분이며, 이제 평촌에서도 최고의 결과를 만들겠습니다.
+            학부모님의 신뢰와 5A 학생들의 노력 덕분이며, 이제 수원에서도 최고의 결과를 만들겠습니다.
             <br />
             <b className="font-bold text-ink">압도적인 성과 – 5A아카데미</b>
           </p>

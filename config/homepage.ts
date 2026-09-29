@@ -60,9 +60,9 @@ export const SITE: SiteSettings = {
    지도는 구글 지도(무료·키 불필요)로 표시됩니다.
    address 를 실제 주소로 맞추면 그 위치가 지도에 표시됩니다. */
 export const LOCATION = {
-  name: "5A 아카데미 평촌점",
+  name: "5A 아카데미 수원점",
   address: "경기도 안양시 평촌대로 112",
   lat: 37.3899,
   lng: 126.9513,
-  mapQuery: "5A아카데미 평촌점", // 지도 바로가기 버튼 검색어
+  mapQuery: "5A아카데미 수원점", // 지도 바로가기 버튼 검색어
 };

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { BRANCHES, CURRENT_BRANCH, isBranchLinkReady } from "@/config/branches";
 
-/** 모바일 전용 지점 선택 드롭다운 (로고 옆 "평촌점 ⌄") */
+/** 모바일 전용 지점 선택 드롭다운 (로고 옆 "수원점 ⌄") */
 export default function BranchDropdown() {
   const [open, setOpen] = useState(false);
 
