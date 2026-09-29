@@ -45,7 +45,7 @@ export const SITE: SiteSettings = {
   subjects: ["국어", "수학", "영어", "사회탐구", "과학탐구", "논술"],
   footer: {
     company: "",
-    address: "경기도 안양시 평촌대로 112",
+    address: "경기 수원시 장안구 정자천로173번길 11-6 (정자동, 세경프라자) 3층",
     bizNo: "217-99-87249",
     tel: "031-347-5151",
     fax: "031-386-1886",
@@ -61,7 +61,7 @@ export const SITE: SiteSettings = {
    address 를 실제 주소로 맞추면 그 위치가 지도에 표시됩니다. */
 export const LOCATION = {
   name: "5A 아카데미 수원점",
-  address: "경기도 안양시 평촌대로 112",
+  address: "경기 수원시 장안구 정자천로173번길 11-6 (정자동, 세경프라자) 3층",
   lat: 37.3899,
   lng: 126.9513,
   mapQuery: "5A아카데미 수원점", // 지도 바로가기 버튼 검색어
