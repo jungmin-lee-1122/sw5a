@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FACILITY_READY } from "@/config/homepage";
 
 export const metadata: Metadata = {
   title: "시설안내 | 5A 아카데미",
@@ -41,6 +42,12 @@ export default function FacilityPage() {
 
       {/* 갤러리 */}
       <div className="mx-auto max-w-6xl px-5 py-10 lg:px-8">
+        {!FACILITY_READY ? (
+          <div className="rounded-2xl border border-dashed border-line bg-gray-50 px-6 py-16 text-center">
+            <p className="text-lg font-bold text-ink">시설안내 준비 중입니다</p>
+            <p className="mt-2 text-sm text-muted">수원점 시설 사진은 곧 안내해 드리겠습니다.</p>
+          </div>
+        ) : (
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {FACILITIES.map((f) => (
             <li
@@ -65,6 +72,7 @@ export default function FacilityPage() {
             </li>
           ))}
         </ul>
+        )}
       </div>
     </main>
   );

@@ -36,6 +36,7 @@ export default function Hero({ slides, poster }: { slides: Slide[]; poster: Post
               <a
                 key={slide.id}
                 href={slide.href || "#"}
+                {...(/^https?:\/\//.test(slide.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="absolute inset-0 transition-opacity duration-700"
                 style={{ opacity: i === index ? 1 : 0, pointerEvents: i === index ? "auto" : "none" }}
                 aria-hidden={i !== index}

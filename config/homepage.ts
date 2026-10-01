@@ -17,13 +17,25 @@ import type { Slide, Poster, Promo, SiteSettings } from "@/lib/types";
    BROCHURE = null        → 단과시간표 상단 PDF(바로보기·다운로드) 숨김
    수원점 시간표/브로셔가 준비되면 true / { title, file } 로 바꾸세요. */
 export const SCHEDULE_READY = false;
+// FACILITY_READY = false → 시설안내 페이지 "준비 중" 표시 (수원점 시설 사진이 준비되면 true + 사진 교체)
+export const FACILITY_READY = false;
 export const BROCHURE: { title: string; file: string } | null = null;
 // 예) export const BROCHURE = { title: "10월 단과 안내 PDF", file: "/2026-10-schedule-brochure.pdf" };
 
 /* ── 히어로 왼쪽: 롤링 슬라이드 (위에서부터 순서대로 재생) ────────────────── */
 export const SLIDES: Slide[] = [
-  { id: "s1", image: "/hero-2.png", href: "/admission/winter", alt: "2027 윈터스쿨", order: 1, active: true },
-  { id: "s2", image: "/hero-1.png", href: "/events/e1", alt: "2027 윈터스쿨 & 입시설명회", order: 2, active: true },
+  {
+    id: "s1",
+    image: "/hero-seminar-pc.jpg",        // PC용 (2000×1143)
+    mobileImage: "/hero-seminar-mo.jpg",  // 모바일용 (2000×2000)
+    href: "https://forms.gle/zE3SJsoDPQW4fV927",
+    alt: "수원정자점 오픈기념 2027 윈터스쿨 & 학년별 입시 로드맵 설명회 — 2026.10.11(일) 오후 2시, 롯데시네마 북수원점 1관",
+    order: 1,
+    active: true,
+  },
+  { id: "s2", image: "/hero-2.png", href: "/admission/winter", alt: "2027 윈터스쿨", order: 2, active: true },
+  // 기존 설명회 롤링창 (평촌) — 내림
+  { id: "s3", image: "/hero-1.png", href: "/events/e1", alt: "2027 윈터스쿨 & 입시설명회", order: 3, active: false },
 ];
 
 /* ── 히어로 오른쪽: 포스터 (하나) ─────────────────────────────────────────── */
