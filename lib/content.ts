@@ -13,7 +13,21 @@ export async function getTeachers(): Promise<Teacher[]> {
   }));
 }
 export const getNotices = () => listCollection<Notice>("notices", SEEDS.notices as Notice[]);
-export const getEvents = () => listCollection<EventItem>("events", SEEDS.events as EventItem[]);
+/** 공개 화면용 — 구글시트 주소(sheetWebhook)는 빼고 반환 */
+export const getEvents = async () =>
+  (await listCollection<EventItem>("events", SEEDS.events as EventItem[])).map(stripEventSecrets);
+/** 방문자에게 보내면 안 되는 필드 제거 */
+export function stripEventSecrets(e: EventItem): EventItem {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { sheetWebhook, ...rest } = e;
+  return rest;
+}
+/** 서버 전용 — 특정 설명회의 구글시트 주소 */
+export async function getEventSheetWebhook(id: string): Promise<string> {
+  const all = await listCollection<EventItem>("events", SEEDS.events as EventItem[]);
+  const url = (all.find((e) => e.id === id)?.sheetWebhook ?? "").trim();
+  return /^https:\/\//.test(url) ? url : "";
+}
 export const getVideos = () => listCollection<VideoItem>("videos", SEEDS.videos as VideoItem[]);
 export const getMenus = () => listCollection<MealMenu>("menus", SEEDS.menus as MealMenu[]);
 export const getGallery = () => listCollection<GalleryItem>("gallery", SEEDS.gallery as GalleryItem[]);

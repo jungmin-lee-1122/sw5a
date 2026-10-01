@@ -30,10 +30,10 @@ export const NAV_MENUS: NavMenu[] = [
           { label: "학원소개", href: "/about" },
           { label: "시설안내", href: "/about/facility" },
           { label: "오시는 길", href: "/about/location" },
-          { label: "공지사항", href: "/notices" },
-          { label: "주간식단표", href: "/menu" },
+          // { label: "공지사항", href: "/notices" }, // 수원점: 우선 숨김
+          // { label: "주간식단표", href: "/menu" }, // 수원점: 우선 숨김
           { label: "재원생 후기", href: "/life/review" },
-          { label: "2026 모의고사 일정", href: "/life/mock" },
+          // { label: "2026 모의고사 일정", href: "/life/mock" }, // 수원점: 우선 숨김
         ],
       },
     ],

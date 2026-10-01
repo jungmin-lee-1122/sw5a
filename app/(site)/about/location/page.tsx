@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   description: "5A 아카데미 수원점 오시는 길 — 위치, 버스·지하철 안내",
 };
 
+// 수원점 교통편(버스·지하철) 확정 전까지 숨김. 아래 정보는 평촌 기준이니 바꾼 뒤 true 로.
+const SHOW_TRANSIT = false;
+
 const GENERAL_BUS = ["1", "3", "52-1", "52", "5-2", "22"];
 const VILLAGE_BUS = ["03", "5-5", "7", "10-2", "11"];
 
@@ -42,7 +45,8 @@ export default function LocationPage() {
           />
         </div>
 
-        {/* 교통편 */}
+        {/* 교통편 — 수원점: 버스·지하철 정보 확정 전까지 숨김 (SHOW_TRANSIT 를 true 로) */}
+        {SHOW_TRANSIT && (
         <div className="grid gap-5 lg:grid-cols-2">
           {/* 버스 */}
           <section className="rounded-2xl border border-line p-6">
@@ -112,6 +116,7 @@ export default function LocationPage() {
             </ol>
           </section>
         </div>
+        )}
 
         {/* 주소 + 전화 (컴팩트) */}
         <div className="rounded-2xl border border-line px-6 py-4 sm:flex sm:items-center sm:justify-between sm:gap-4">

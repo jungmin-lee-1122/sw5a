@@ -145,6 +145,7 @@ export interface EventItem {
   host?: string;       // 주최/주관
   applyUrl?: string;   // 예약하기 모달에 띄울 구글폼 링크 (비우면 전화 안내)
   thumbnail?: string;  // 목록 썸네일 (선택)
+  sheetWebhook?: string; // 이 설명회 예약을 받을 구글시트(Apps Script 웹 앱 URL). 비우면 기본 시트로. ※ 관리자에게만 노출
 }
 
 /** 영상 (유튜브) 항목 */

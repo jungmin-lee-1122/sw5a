@@ -36,6 +36,13 @@ export default function Page() {
           help: "프로그램 순서 대신 상세 페이지에 표시됩니다. A4 비율(세로형) 이미지를 권장합니다.",
         },
         {
+          key: "sheetWebhook",
+          label: "예약 받을 구글시트 주소(선택)",
+          type: "text",
+          placeholder: "https://script.google.com/macros/s/…/exec",
+          help: "이 설명회 예약만 따로 받을 시트의 Apps Script 웹 앱 URL. 비우면 기본 시트로 갑니다. (방문자에게는 보이지 않음)",
+        },
+        {
           key: "href",
           label: "외부 링크(선택)",
           type: "text",
@@ -55,6 +62,7 @@ export default function Page() {
         host: "",
         intro: "",
         poster: "",
+        sheetWebhook: "",
         href: "",
       }}
       summary={(item) => (

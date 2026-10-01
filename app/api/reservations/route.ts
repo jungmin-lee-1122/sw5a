@@ -3,6 +3,7 @@
 //   2) SHEET_WEBHOOK_URL 환경변수가 있으면 구글시트(Apps Script)로도 전송
 import { NextResponse } from "next/server";
 import { readData, writeData, newId } from "@/lib/store";
+import { getEventSheetWebhook } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
@@ -68,10 +69,18 @@ export async function POST(req: Request) {
   }
 
   // 2) 구글시트(Apps Script Web App)로 전송
-  //    [DB제공 동의] 이벤트는 별도 시트(SHEET_WEBHOOK_URL_DB)로 전송, 그 외는 기본 시트
+  //    우선순위: ① 관리자에서 설명회별로 넣은 시트 주소
+  //             ② [DB제공 동의] 이벤트 → SHEET_WEBHOOK_URL_DB
+  //             ③ 그 외 → 기본 시트 SHEET_WEBHOOK_URL
   const isDbConsent = /DB\s*제공/.test(str(body.eventTitle));
+  let eventWebhook = "";
+  try {
+    eventWebhook = record.eventId ? await getEventSheetWebhook(String(record.eventId)) : "";
+  } catch (e) {
+    console.error("[reservations] event webhook lookup failed", e);
+  }
   const webhook =
-    (isDbConsent && process.env.SHEET_WEBHOOK_URL_DB) || process.env.SHEET_WEBHOOK_URL;
+    eventWebhook || (isDbConsent && process.env.SHEET_WEBHOOK_URL_DB) || process.env.SHEET_WEBHOOK_URL;
   if (webhook) {
     try {
       const res = await fetch(webhook, {
