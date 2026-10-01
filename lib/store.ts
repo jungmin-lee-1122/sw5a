@@ -11,6 +11,12 @@ const REDIS_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_
 const REDIS_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 const useRedis = Boolean(REDIS_URL && REDIS_TOKEN);
 
+// ⚠️ 평촌점(pc5a)과 같은 Redis 를 함께 쓰므로, 수원점 데이터는 모두 "sw5a:" 를 붙여 저장합니다.
+//    (예: 평촌 "teachers" ↔ 수원 "sw5a:teachers" — 서로 덮어쓰지 않음)
+//    이 값은 절대 비우거나 바꾸지 마세요. 비우면 평촌 데이터를 덮어씁니다.
+const KEY_PREFIX = "sw5a:";
+const keyOf = (name: string) => `${KEY_PREFIX}${name}`;
+
 type RedisClient = import("@upstash/redis").Redis;
 let redisClient: RedisClient | null = null;
 
@@ -26,7 +32,7 @@ async function getRedis(): Promise<RedisClient> {
 export async function readData<T>(name: string, fallback: T): Promise<T> {
   if (useRedis) {
     const redis = await getRedis();
-    const value = await redis.get<T>(name);
+    const value = await redis.get<T>(keyOf(name));
     return value ?? fallback;
   }
   try {
@@ -41,7 +47,7 @@ export async function readData<T>(name: string, fallback: T): Promise<T> {
 export async function writeData<T>(name: string, value: T): Promise<void> {
   if (useRedis) {
     const redis = await getRedis();
-    await redis.set(name, value);
+    await redis.set(keyOf(name), value);
     return;
   }
   await fs.mkdir(DATA_DIR, { recursive: true });
