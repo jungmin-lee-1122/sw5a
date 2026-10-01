@@ -141,24 +141,35 @@ export default function Teachers({
               ))}
             </div>
 
+            {/* 좌·우 이동 버튼 — 캐러셀 양 끝 안쪽, 세로 가운데 (z-20: 카드 글자층(z-10) 위) */}
             {canScroll && (
               <>
                 <button
-                  onClick={() => scrollByDir(1)}
-                  aria-label="다음 강사"
-                  className="absolute -right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-gray-600 shadow-md backdrop-blur transition hover:text-brand lg:-right-3"
+                  type="button"
+                  onClick={() => {
+                    pause();
+                    scheduleResume();
+                    scrollByDir(-1);
+                  }}
+                  aria-label="이전 강사"
+                  className="absolute left-0 top-1/2 z-20 flex h-[52px] w-[30px] -translate-y-1/2 items-center justify-center rounded-[3px] bg-gray-200/90 text-white transition-colors hover:bg-gray-300"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 6l6 6-6 6" />
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M15 6l-6 6 6 6" />
                   </svg>
                 </button>
                 <button
-                  onClick={() => scrollByDir(-1)}
-                  aria-label="이전 강사"
-                  className="absolute -left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-gray-600 shadow-md backdrop-blur transition hover:text-brand lg:-left-3"
+                  type="button"
+                  onClick={() => {
+                    pause();
+                    scheduleResume();
+                    scrollByDir(1);
+                  }}
+                  aria-label="다음 강사"
+                  className="absolute right-0 top-1/2 z-20 flex h-[52px] w-[30px] -translate-y-1/2 items-center justify-center rounded-[3px] bg-gray-200/90 text-white transition-colors hover:bg-gray-300"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M15 6l-6 6 6 6" />
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 6l6 6-6 6" />
                   </svg>
                 </button>
               </>
