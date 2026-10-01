@@ -7,6 +7,7 @@ import type { SuccessStory } from "@/lib/types";
 
 type Kind = "수기" | "영상";
 const PER = 15;
+const SHOW_FILTERS = false; // 합격 대학 드롭다운·검색창 표시 여부
 
 /** 유튜브 URL → 썸네일 이미지 */
 function ytThumb(url?: string): string {
@@ -99,6 +100,8 @@ export default function StoriesView({
           <p className="text-sm text-gray-500">
             총 <span className="font-bold text-brand">{filtered.length}</span>건
           </p>
+          {/* 합격 대학 드롭다운 + 검색 — 수원점: 우선 숨김 (SHOW_FILTERS 를 true 로) */}
+          {SHOW_FILTERS && (
           <div className="flex flex-wrap items-center gap-2">
             <select
               value={group}
@@ -133,6 +136,7 @@ export default function StoriesView({
               />
             </div>
           </div>
+          )}
         </div>
 
         {/* 목록 */}
