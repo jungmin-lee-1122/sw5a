@@ -26,13 +26,13 @@ export default async function Home() {
       <MobileQuickNav />
       <Hero slides={SLIDES.filter((s) => s.active)} poster={POSTER} />
       <Banner banners={BANNERS} />
-      <Teachers teachers={teachers} subjects={SITE.subjects} />
       {/* 메인 입시설명회 티저에서는 'DB제공 동의' 고정 항목을 제외하고 그 다음 첫 항목을 노출
           (/events 페이지는 그대로 이 항목이 1등으로 표시됨) */}
       <NoticeEvents
         notices={notices}
         events={events.filter((e) => !/DB\s*제공/.test(e.title ?? ""))}
       />
+      <Teachers teachers={teachers} subjects={SITE.subjects} />
       <Videos videos={videos} promo={PROMO} title={SITE.sectionTitle} />
     </main>
   );
