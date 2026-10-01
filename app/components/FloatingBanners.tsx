@@ -6,7 +6,8 @@ import { useState } from "react";
 /** 롤링창 좌측 플로팅 배너 버튼 (PC 전용) */
 const ITEMS = [
   { img: "/floating-winter.png", alt: "2027 윈터스쿨 모집안내 바로가기", href: "/admission/winter" },
-  { img: "/floating-schedule.png", alt: "고등부 단과 시간표 바로보기", href: "/schedule" },
+  // 수원점: 단과시간표 준비 중이라 숨김 (공개 시 아래 줄 주석 해제)
+  // { img: "/floating-schedule.png", alt: "고등부 단과 시간표 바로보기", href: "/schedule" },
   { img: "/floating-sms.png", alt: "모집 및 설명회 문자알리미 신청", href: "/events/mtjy2wbjydlix5" },
 ];
 
