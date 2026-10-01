@@ -2,6 +2,9 @@ import Link from "next/link";
 import { targetLabel } from "@/lib/types";
 import type { Notice, EventItem } from "@/lib/types";
 
+// 수원점: 공지사항 패널 숨김 → 입시설명회만 가로로 넓게 표시. (공지 다시 쓰려면 true)
+const SHOW_NOTICES = false;
+
 export default function NoticeEvents({
   notices,
   events,
@@ -11,6 +14,30 @@ export default function NoticeEvents({
 }) {
   const sortedNotices = [...notices].sort((a, b) => a.order - b.order);
   const sortedEvents = [...events].sort((a, b) => a.order - b.order);
+
+  if (!SHOW_NOTICES) {
+    // 접수중/접수예정 설명회 우선 (최대 2개), 없으면 가장 앞 1개
+    const open = sortedEvents.filter((e) => !/마감|종료/.test(e.status || ""));
+    const list = (open.length ? open : sortedEvents).slice(0, 2);
+    return (
+      <section className="mx-auto max-w-6xl px-5 pt-14 lg:px-8">
+        <PanelHeader title="입시설명회" moreHref="/events" />
+        {list.length === 0 ? (
+          <Panel className="bg-[#F6F7FB]">
+            <ul>
+              <Empty>등록된 입시설명회가 없습니다</Empty>
+            </ul>
+          </Panel>
+        ) : (
+          <div className="flex flex-col gap-3">
+            {list.map((e) => (
+              <WideEventCard key={e.id} event={e} />
+            ))}
+          </div>
+        )}
+      </section>
+    );
+  }
 
   return (
     <section className="mx-auto max-w-6xl px-5 pt-14 lg:px-8">
@@ -153,4 +180,105 @@ function EventRow({ event }: { event: EventItem }) {
 
 function Empty({ children }: { children: React.ReactNode }) {
   return <li className="py-10 text-center text-sm text-muted">{children}</li>;
+}
+
+/** "2026.10.11(일) 14:00" → { md: "10.11", dow: "일", time: "14:00" } */
+function parseWhen(text: string) {
+  const m = text.match(/(\d{4})[.\-/]\s*(\d{1,2})[.\-/]\s*(\d{1,2})\s*(?:\(([^)]+)\))?\s*(.*)$/);
+  if (!m) return null;
+  const pad = (v: string) => v.padStart(2, "0");
+  return { md: `${pad(m[2])}.${pad(m[3])}`, dow: m[4] || "", time: (m[5] || "").trim() };
+}
+
+/** 수원점 메인 — 가로형 설명회 카드 (날짜 블록 · 내용 · 예약 버튼) */
+function WideEventCard({ event }: { event: EventItem }) {
+  const targets = targetLabel(event.targets).split(/[,\u00b7]/).map((t) => t.trim()).filter(Boolean);
+  const status = event.status || "접수중";
+  const closed = /마감|종료/.test(status);
+  const href = event.href && event.href !== "#" ? event.href : `/events/${event.id}`;
+  const whenText = event.eventDate || event.date || "";
+  const when = parseWhen(whenText);
+
+  return (
+    <Link
+      href={href}
+      className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-[#F6F7FB] transition hover:border-brand/40 hover:shadow-[0_6px_24px_rgba(30,42,99,0.08)] sm:flex-row sm:items-stretch"
+    >
+      {/* 날짜 블록 */}
+      <div
+        className={
+          "flex shrink-0 items-center gap-3 px-5 py-3 sm:w-36 sm:flex-col sm:justify-center sm:gap-1 sm:px-0 sm:py-5 " +
+          (closed ? "bg-gray-200 text-gray-500" : "bg-brand text-white")
+        }
+      >
+        {when ? (
+          <>
+            <span className="text-2xl font-extrabold leading-none tracking-tight sm:text-[32px]">{when.md}</span>
+            <span className="text-[13px] font-semibold opacity-90 sm:text-sm">
+              {when.dow && `${when.dow}요일`}
+              {when.dow && when.time ? " · " : ""}
+              {when.time}
+            </span>
+          </>
+        ) : (
+          <span className="text-sm font-bold">일정 안내</span>
+        )}
+      </div>
+
+      {/* 내용 */}
+      <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 px-5 py-4 sm:px-7 sm:py-5">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span
+            className={
+              "rounded-full px-2.5 py-0.5 text-[12px] font-bold " +
+              (closed ? "bg-gray-200 text-gray-500" : "bg-brand-light text-brand")
+            }
+          >
+            {status}
+          </span>
+          {targets.map((t, i) => (
+            <span key={i} className="rounded-md border border-line bg-white px-2 py-0.5 text-[12px] font-medium text-gray-600">
+              {t}
+            </span>
+          ))}
+        </div>
+        <p className="text-[17px] font-extrabold leading-snug text-ink transition-colors group-hover:text-brand sm:text-[20px]">
+          {event.title}
+        </p>
+        <div className="flex flex-col gap-y-0.5 text-[13px] text-gray-600 sm:flex-row sm:flex-wrap sm:gap-x-5 sm:text-[14px]">
+          {whenText && (
+            <span>
+              <b className="mr-1.5 font-semibold text-ink">일시</b>
+              {whenText}
+            </span>
+          )}
+          {event.location && (
+            <span>
+              <b className="mr-1.5 font-semibold text-ink">장소</b>
+              {event.location}
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* 예약 버튼 */}
+      <div className="flex shrink-0 items-center px-5 pb-4 sm:px-7 sm:pb-0">
+        <span
+          className={
+            "inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-5 py-2.5 text-sm font-bold transition sm:w-auto " +
+            (closed
+              ? "border border-gray-300 bg-white text-gray-400"
+              : "bg-brand text-white group-hover:bg-brand-dark")
+          }
+        >
+          {closed ? "접수 마감" : "예약하기"}
+          {!closed && (
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          )}
+        </span>
+      </div>
+    </Link>
+  );
 }
