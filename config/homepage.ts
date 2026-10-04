@@ -77,7 +77,7 @@ export const PROMO: Promo = {
 export const SITE: SiteSettings = {
   brandName: "아카데미",
   sectionTitle: "5A아카데미 선생님 클립영상",
-  subjects: ["국어", "수학", "영어", "인문논술", "수리논술"], // 사탐·과탐 숨김 / 논술 → 인문·수리 분리
+  subjects: ["국어", "수학", "영어", "사회탐구", "과학탐구", "인문논술", "수리논술"], // 평촌점과 동일 순서
   footer: {
     company: "",
     address: "경기 수원시 장안구 정자천로173번길 11-6 (정자동, 세경프라자) 3층",
