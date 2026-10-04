@@ -5,13 +5,14 @@ import PrivacyModal from "./PrivacyModal";
 
 export default function Footer({ site }: { site: SiteSettings }) {
   const { footer, social } = site;
+  // 값이 비어 있는 항목은 표시하지 않음
   const info = [
-    `주소 : ${footer.address}`,
-    `사업자등록번호 : ${footer.bizNo}`,
-    `TEL : ${footer.tel}`,
-    `FAX : ${footer.fax}`,
-    `학원등록번호 : ${footer.regNo}`,
-  ];
+    footer.address && `주소 : ${footer.address}`,
+    footer.bizNo && `사업자등록번호 : ${footer.bizNo}`,
+    footer.tel && `TEL : ${footer.tel}`,
+    footer.fax && `FAX : ${footer.fax}`,
+    footer.regNo && `학원등록번호 : ${footer.regNo}`,
+  ].filter(Boolean) as string[];
 
   return (
     <footer className="border-t border-line">

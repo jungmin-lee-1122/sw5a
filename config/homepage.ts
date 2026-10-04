@@ -81,10 +81,10 @@ export const SITE: SiteSettings = {
   footer: {
     company: "",
     address: "경기 수원시 장안구 정자천로173번길 11-6 (정자동, 세경프라자) 3층",
-    bizNo: "217-99-87249",
+    bizNo: "",            // 수원점 사업자등록번호 — 전달받으면 입력 (비우면 하단에 표시 안 함)
     tel: "031-347-5151",
     fax: "031-386-1886",
-    regNo: "제2024-089호",
+    regNo: "",            // 수원점 학원등록번호 — 전달받으면 입력 (비우면 하단에 표시 안 함)
     copyright: "Copyright ⓒ 5A 아카데미 All Right Reserved.",
     brand: "5A 아카데미",
   },
