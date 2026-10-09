@@ -3,7 +3,7 @@
 //  전체 지점 안내창이 모두 이 파일 하나를 사용합니다.
 //
 //  · 현재 사이트는 "수원점" 입니다 (current: true).
-//  · 평촌점 링크: pyeongchon 의 `href` (https://pc5a.vercel.app)
+//  · 평촌점 링크: pyeongchon 의 `href` (https://www.pc5aacademy.com)
 //    href 는 내부 경로("/..."), 서브도메인, 별도 도메인 무엇이든 됩니다.
 // ─────────────────────────────────────────────────────────────────
 import { SITE } from "./homepage";
@@ -29,7 +29,7 @@ export const BRANCHES: Branch[] = [
     name: "평촌",
     label: "평촌점",
     full: "5A 아카데미 평촌점",
-    href: "https://pc5a.vercel.app", // 평촌점 홈페이지
+    href: "https://www.pc5aacademy.com", // 평촌점 홈페이지
     current: false,
     status: "운영중",
     address: "경기도 안양시 평촌대로 112",
