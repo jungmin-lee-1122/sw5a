@@ -77,10 +77,10 @@ export const PROMO: Promo = {
 export const SITE: SiteSettings = {
   brandName: "아카데미",
   sectionTitle: "5A아카데미 선생님 클립영상",
-  subjects: ["국어", "수학", "영어", "사회탐구", "과학탐구", "인문논술", "수리논술"], // 평촌점과 동일 순서
+  subjects: ["국어", "수학", "영어", "사회탐구", "과학탐구", "논술"],
   footer: {
     company: "",
-    address: "경기 수원시 장안구 정자천로173번길 11-6 (정자동, 세경프라자) 3층",
+    address: "경기도 수원시 장안구 대평로90번길 16, 7층",
     bizNo: "",            // 수원점 사업자등록번호 — 전달받으면 입력 (비우면 하단에 표시 안 함)
     tel: "031-347-5151",
     fax: "031-386-1886",
@@ -96,7 +96,7 @@ export const SITE: SiteSettings = {
    address 를 실제 주소로 맞추면 그 위치가 지도에 표시됩니다. */
 export const LOCATION = {
   name: "5A 아카데미 수원점",
-  address: "경기 수원시 장안구 정자천로173번길 11-6 (정자동, 세경프라자) 3층",
+  address: "경기도 수원시 장안구 대평로90번길 16, 7층",
   lat: 37.3899,
   lng: 126.9513,
   mapQuery: "5A아카데미 수원점", // 지도 바로가기 버튼 검색어
