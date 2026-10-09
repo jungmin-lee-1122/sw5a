@@ -4,7 +4,7 @@ import "./globals.css";
 
 const SITE_URL = "https://www.sw5aacademy.com";
 const SITE_NAME = "5A아카데미 수원점";
-const SITE_DESC = "수원 대입 전문 5A 아카데미 — 윈터스쿨, 정규 단과, 논술 특강. 최고의 강사진과 함께합니다.";
+const SITE_DESC = "대입 전문 5A 아카데미 — 윈터스쿨, 정규 단과, 논술 특강. 최고의 강사진과 함께합니다.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
