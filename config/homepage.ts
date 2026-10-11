@@ -59,11 +59,19 @@ export const BANNERS: Promo[] = [
     alt: "5A 수원정자점 GRAND OPEN!",
   },
   {
-    image: "/banner-seminar-pc.png",
-    mobileImage: "/banner-seminar-mo.png",
-    href: "https://forms.gle/o2jUEqJEyt9U9u2m8",
-    alt: "2027 윈터스쿨 & 학년별 입시전략 설명회 — 2026.10.11(일) 오후 2시, 롯데시네마 북수원점 1관 · 설명회 신청하기",
+    // 평촌점과 동일한 2027 윈터스쿨 모집 배너
+    image: "/banner-winter-pc.png",
+    mobileImage: "/banner-winter-mo.png",
+    href: "/admission/winter",
+    alt: "2027 윈터스쿨 모집",
   },
+  // 10/11 설명회 배너 — 설명회 종료로 내림
+  // {
+  //   image: "/banner-seminar-pc.png",
+  //   mobileImage: "/banner-seminar-mo.png",
+  //   href: "https://forms.gle/o2jUEqJEyt9U9u2m8",
+  //   alt: "2027 윈터스쿨 & 학년별 입시전략 설명회 — 2026.10.11(일) 오후 2시, 롯데시네마 북수원점 1관 · 설명회 신청하기",
+  // },
 ];
 
 /* ── 영상 섹션 우측 하단: 홍보 사각배너 ───────────────────────────────────── */
