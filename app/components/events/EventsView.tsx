@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { EventItem, EventStatus } from "@/lib/types";
 import { targetLabel } from "@/lib/types";
 import StatusBadge from "./StatusBadge";
+import { EVENT_FORM_LINKS } from "@/config/homepage";
 
 type Filter = "전체" | EventStatus;
 const FILTERS: Filter[] = ["전체", "접수중", "접수예정", "마감"];
@@ -77,10 +78,13 @@ export default function EventsView({ events }: { events: EventItem[] }) {
           {list.map((e) => {
             const closed = (e.status ?? "접수중") === "마감";
             const isDb = /DB\s*제공/.test(e.title ?? "");
+            // config/homepage.ts 의 EVENT_FORM_LINKS 에 등록된 설명회만 구글폼(새 창)으로
+            const formUrl = closed ? "" : EVENT_FORM_LINKS[e.id] ?? "";
             return (
               <li key={e.id}>
                 <Link
-                  href={`/events/${e.id}`}
+                  href={formUrl || `/events/${e.id}`}
+                  {...(formUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className={
                     isDb
                       ? "group block rounded-2xl border border-brand/25 border-l-[5px] border-l-brand bg-brand-light/25 p-5 shadow-sm transition-colors hover:border-brand/50 sm:p-6"

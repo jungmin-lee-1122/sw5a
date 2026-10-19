@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EVENT_FORM_LINKS } from "@/config/homepage";
 import { targetLabel } from "@/lib/types";
 import type { Notice, EventItem } from "@/lib/types";
 
@@ -195,13 +196,16 @@ function WideEventCard({ event }: { event: EventItem }) {
   const targets = targetLabel(event.targets).split(/[,\u00b7]/).map((t) => t.trim()).filter(Boolean);
   const status = event.status || "접수중";
   const closed = /마감|종료/.test(status);
-  const href = event.href && event.href !== "#" ? event.href : `/events/${event.id}`;
+  const formUrl = closed ? "" : EVENT_FORM_LINKS[event.id] ?? "";
+  const href = formUrl || (event.href && event.href !== "#" ? event.href : `/events/${event.id}`);
+  const external = /^https?:\/\//.test(href);
   const whenText = event.eventDate || event.date || "";
   const when = parseWhen(whenText);
 
   return (
     <Link
       href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-[#F6F7FB] transition hover:border-brand/40 hover:shadow-[0_6px_24px_rgba(30,42,99,0.08)] sm:flex-row sm:items-stretch"
     >
       {/* 날짜 블록 */}

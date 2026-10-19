@@ -16,6 +16,18 @@ import type { Slide, Poster, Promo, SiteSettings } from "@/lib/types";
    SCHEDULE_READY = false → 단과시간표 · 강좌 상세 · 선생님 "개설 강좌" 모두 "준비 중" 표시
    BROCHURE = null        → 단과시간표 상단 PDF(바로보기·다운로드) 숨김
    수원점 시간표/브로셔가 준비되면 true / { title, file } 로 바꾸세요. */
+/* ── 설명회 신청 외부 링크 (설명회별) ─────────────────────────────────────
+   여기 적힌 설명회만 홈페이지 내부 신청폼 대신 아래 링크(구글폼, 새 창)로 신청받습니다.
+   · 메인 '입시설명회' 카드, 설명회 목록 카드 → 바로 이 링크로 이동
+   · 설명회 상세 페이지 → 입력폼 대신 '예약 신청하러 가기' 버튼
+   키 = 설명회 ID (주소 /events/ 뒤의 값). 다음 설명회부터 내부 신청으로 돌아가려면 줄을 지우세요. */
+const SUWON_SEMINAR_FORM =
+  "https://docs.google.com/forms/d/e/1FAIpQLSd0OIjagFKfEce7QBs6vaxJ3nlG_sjQkxD0Y5YwoBuoieGp_w/viewform";
+export const EVENT_FORM_LINKS: Record<string, string> = {
+  mvdmt1q4qqxf2w: SUWON_SEMINAR_FORM, // 10/31 설명회
+  mvdmxymsdnkjio: SUWON_SEMINAR_FORM, // 11/4 설명회
+};
+
 export const SCHEDULE_READY = false;
 // FACILITY_READY = false → 시설안내 페이지 "준비 중" 표시 (수원점 시설 사진이 준비되면 true + 사진 교체)
 export const FACILITY_READY = false;

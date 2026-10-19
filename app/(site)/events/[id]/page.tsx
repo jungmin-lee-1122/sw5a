@@ -5,6 +5,8 @@ import { getEvents } from "@/lib/content";
 import { targetLabel } from "@/lib/types";
 import StatusBadge from "@/app/components/events/StatusBadge";
 import EventForm from "@/app/components/events/EventForm";
+import ExternalApply from "@/app/components/events/ExternalApply";
+import { EVENT_FORM_LINKS } from "@/config/homepage";
 
 export const dynamic = "force-dynamic";
 
@@ -41,9 +43,11 @@ export default async function EventDetailPage({
   const { id } = await params;
   const event = await findEvent(id);
   if (!event) notFound();
+  // 구글폼으로 받는 설명회면 입력폼 대신 신청 버튼
+  const formUrl = EVENT_FORM_LINKS[event.id] ?? "";
 
   return (
-    <main className="flex-1 pb-16">
+    <main className={`flex-1 ${formUrl ? "pb-32 lg:pb-16" : "pb-16"}`}>
       {/* 상단 헤더 */}
       <div className="relative isolate overflow-hidden border-b border-line bg-brand-light">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -119,7 +123,7 @@ export default async function EventDetailPage({
           {/* 우측 예약폼 (데스크톱은 sticky) */}
           <div className="lg:col-span-2">
             <div className="lg:sticky lg:top-24">
-              <EventForm event={event} />
+              {formUrl ? <ExternalApply event={event} url={formUrl} /> : <EventForm event={event} />}
             </div>
           </div>
         </div>
