@@ -402,6 +402,14 @@ export const W27_CSS = `:host{display:block}
 .jr-winter27 .w-next-copy p{font-size:16px;line-height:1.7;color:#c9d0e0}
 .jr-winter27 .w-next .w-btn{position:relative;z-index:1}
 .jr-winter27 .w-adm dd a{color:var(--accent);font-weight:900}
+.jr-winter27 .w-sch-guide{margin-top:18px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:26px 30px}
+.jr-winter27 .w-sch-guide-t{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:15px;font-weight:700;color:var(--orange)}
+.jr-winter27 .w-sch-guide-t::before{content:'!';display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--orange);color:var(--navy);font-size:13px;font-weight:900;flex:none}
+.jr-winter27 .w-sch-guide .w-notes{margin-top:0;gap:10px}
+.jr-winter27 .w-sch-guide .w-notes li{font-size:15px;color:#dfe4ef}
+.jr-winter27 .w-sch-guide .w-notes strong{color:#fff}
+.jr-winter27 .w-sch-x{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.jr-winter27 .w-sch-x span{font-size:13px;line-height:1.4;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff}
 @keyframes w27shine{0%,60%{left:-60%}85%,100%{left:130%}}
 @keyframes w27float{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(-18px,22px) rotate(8deg)}}
 @keyframes w27snow{0%{transform:translate(0,-10px)}100%{transform:translate(var(--dx),620px)}}
@@ -678,6 +686,13 @@ export const W27_CSS = `:host{display:block}
 .jr-winter27 .w-next .w-btn{width:100%}
 .jr-winter27 .w-day.d3{display:block}
 .jr-winter27 .w-date.pre>div>strong{margin-top:calc(26 * var(--mo))}
+.jr-winter27 .w-sch-guide{margin-top:calc(22 * var(--mo));border-radius:calc(22 * var(--mo));padding:calc(28 * var(--mo)) calc(26 * var(--mo))}
+.jr-winter27 .w-sch-guide-t{font-size:calc(22 * var(--mo));gap:calc(10 * var(--mo));margin-bottom:calc(18 * var(--mo))}
+.jr-winter27 .w-sch-guide-t::before{width:calc(28 * var(--mo));height:calc(28 * var(--mo));font-size:calc(18 * var(--mo))}
+.jr-winter27 .w-sch-guide .w-notes{gap:calc(12 * var(--mo))}
+.jr-winter27 .w-sch-guide .w-notes li{font-size:calc(21 * var(--mo))}
+.jr-winter27 .w-sch-x{gap:calc(8 * var(--mo));margin-top:calc(12 * var(--mo))}
+.jr-winter27 .w-sch-x span{font-size:calc(19 * var(--mo));padding:calc(6 * var(--mo)) calc(14 * var(--mo))}
 }
 @media (prefers-reduced-motion:reduce){
   .jr-winter27 *,.jr-winter27 *::before,.jr-winter27 *::after{animation:none!important;transition:none!important}

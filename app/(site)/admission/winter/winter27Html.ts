@@ -173,14 +173,21 @@ export const W27_HTML = `<div class="jr-winter27" id="jrw27">
         <div class="w-sch-cards">
           <div class="w-sch-card" data-rv="left">
             <div class="hd"><strong>성적우수 장학</strong><span class="rate">수강료 <b data-count="15" data-suffix="%">15%</b> 면제</span></div>
-            <div class="bd"><div class="row"><span>모의고사 · 고2·3</span><p>2026년 시행 모의고사 국수영 합 3</p></div><div class="row"><span>내신 · 고2 과정</span><p>국수영사과 내신 1.1 이내</p></div><div class="row"><span>내신 · 고3 과정</span><p>국수영사과 내신 1.2 이내</p></div><p class="note">2026년 내신 성적표 및 모의고사 성적표 제출 시 적용</p></div>
+            <div class="bd"><div class="row"><span>모의고사 · 고2·3</span><p>2026년 시행 모의고사 국수영 합 3</p></div><div class="row"><span>내신 · 고2 과정</span><p>국수영사과 내신 1.1 이내</p></div><div class="row"><span>내신 · 고3 과정</span><p>국수영사과 내신 1.2 이내</p></div><p class="note">2026년 내신 · 모의고사 성적표 제출 시 적용</p></div>
           </div>
           <div class="w-sch-card b" data-rv="right">
             <div class="hd"><strong>멤버십 장학</strong><span class="rate">수강료 <b data-count="10" data-suffix="%">10%</b> 면제</span></div>
             <div class="bd"><div class="row"><span>윈터스쿨 재원생</span><p>5A아카데미 전년도 윈터스쿨 재원생</p></div><div class="row"><span>단과 재원생</span><p>2026년 5A아카데미 단과 4개월 이상 재원생</p></div><div class="row"><span>형제 / 자매</span><p>윈터스쿨·단과 포함 정규 과정에 형제·자매 동시 등록 시</p></div><p class="note">대상: 전체 학년</p></div>
           </div>
         </div>
-        <ul class="w-notes" data-rv="up"><li>사전등록 할인혜택과 성적우수장학 할인혜택은 중복 적용됩니다.</li><li>교재비, 모의고사비, 급식비는 장학금에 포함되지 않습니다.</li><li>제적 처분, 정당한 사유 없는 자퇴, 평균 출석률 95% 이하인 경우 장학금 지급을 중지·취소하며, 이미 지급된 장학금은 즉시 회수합니다.</li></ul>
+        <div class="w-sch-guide" data-rv="up"><p class="w-sch-guide-t">장학 유의사항</p><ul class="w-notes">
+          <li>본 장학제도는 5A아카데미 2027 윈터스쿨 입학생에게만 적용합니다.</li>
+          <li>모든 장학은 중복 적용되지 않습니다. 단, 학생이 유리한 조건의 장학기준을 우선하여 적용합니다.</li>
+          <li>성적우수장학 대상자는 2026년 내신 성적표 및 모의고사 성적표 제출시 장학혜택이 적용됩니다.</li>
+          <li>사전등록 할인혜택과 성적우수장학 할인혜택만 <strong>중복가능</strong>합니다.</li>
+          <li>다음에 해당하는 경우, 장학금 지급을 중지 또는 취소하며 이미 지급된 장학금이 있을 경우 즉시 회수합니다.<span class="w-sch-x"><span>학원 규정에 의해 제적처분을 받은 자</span><span>정당한 사유 없이 자퇴한 자</span><span>평균 출석률이 95% 이하인 자</span></span></li>
+          <li>교재비, 모의고사비, 급식비는 장학금에 포함되지 않습니다.</li>
+        </ul></div>
       </div>
       <div class="w-ent">
         <div class="w-subhd"><h3 class="w-h3" data-rv="up">입학전형 · 반 편성 기준</h3><p data-rv="up">무시험 입학전형 자격 미달 시, 프리미엄 테스트 응시 후 상담을 통해 입학 가능합니다.</p></div>
