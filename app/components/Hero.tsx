@@ -91,6 +91,7 @@ export default function Hero({ slides, poster }: { slides: Slide[]; poster: Post
         <div className="hidden lg:block">
           <a
             href={poster?.href || "#"}
+            {...(poster && /^https?:\/\//.test(poster.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             className="block h-full w-full overflow-hidden rounded-2xl border border-line bg-white"
           >
             {poster ? (

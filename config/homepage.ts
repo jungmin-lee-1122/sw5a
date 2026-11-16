@@ -50,8 +50,10 @@ export const SLIDES: Slide[] = [
   { id: "s3", image: "/hero-1.png", href: "/events/e1", alt: "2027 윈터스쿨 & 입시설명회", order: 3, active: false },
 ];
 
-/* ── 히어로 오른쪽: 포스터 (하나) ─────────────────────────────────────────── */
-export const POSTER: Poster = {
+/* ── 히어로 오른쪽: 포스터 (하나) ───────────────────────────────────────────
+   지금 노출: 11/21 수능 점수 분석·정시 합격점수 예측 긴급설명회 포스터
+   윈터스쿨 포스터로 되돌리려면 맨 아래 줄을 export const POSTER: Poster = POSTER_WINTER; 로 바꾸면 됩니다. */
+export const POSTER_WINTER: Poster = {
   id: "p1",
   image: "/poster.png",
   href: "/admission/winter",
@@ -59,6 +61,17 @@ export const POSTER: Poster = {
   order: 1,
   active: true,
 };
+
+export const POSTER_BRIEFING: Poster = {
+  id: "p2",
+  image: "/poster-briefing-1121.jpg",
+  href: "https://forms.gle/84rcNtEtKq72u9Kt9",
+  alt: "2027학년도 수능 점수 분석 및 정시 합격점수 예측 긴급설명회 — 11월 21일(토) 오후 2시",
+  order: 1,
+  active: true,
+};
+
+export const POSTER: Poster = POSTER_BRIEFING;
 
 /* ── 롤링창·포스터 바로 밑: 배너 슬라이드 (위에서부터 순서대로 재생) ──────────
    image = PC용(1956×168), mobileImage = 모바일용(1080×320)
