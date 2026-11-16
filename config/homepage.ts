@@ -43,7 +43,7 @@ export const SLIDES: Slide[] = [
     href: "https://forms.gle/zE3SJsoDPQW4fV927",
     alt: "수원정자점 오픈기념 2027 윈터스쿨 & 학년별 입시 로드맵 설명회 — 2026.10.11(일) 오후 2시, 롯데시네마 북수원점 1관",
     order: 1,
-    active: true,
+    active: false, // 입시 로드맵 설명회 롤링창 — 내림 (다시 올리려면 true)
   },
   { id: "s2", image: "/hero-2.png", href: "/admission/winter", alt: "2027 윈터스쿨", order: 2, active: true },
   // 기존 설명회 롤링창 (평촌) — 내림

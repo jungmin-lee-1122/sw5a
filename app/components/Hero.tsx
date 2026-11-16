@@ -53,7 +53,7 @@ export default function Hero({ slides, poster }: { slides: Slide[]; poster: Post
             ))}
 
             {/* dn-slider-ctrl 스타일 컨트롤 */}
-            {count > 0 && (
+            {count > 1 && (
               <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 sm:bottom-5 sm:right-5">
                 <button
                   type="button"
