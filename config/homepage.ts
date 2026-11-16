@@ -51,7 +51,7 @@ export const SLIDES: Slide[] = [
 ];
 
 /* ── 히어로 오른쪽: 포스터 (하나) ───────────────────────────────────────────
-   지금 노출: 11/21 수능 점수 분석·정시 합격점수 예측 긴급설명회 포스터
+   지금 노출: 11/22 수원 수능 점수 분석·정시 합격점수 예측 긴급설명회 포스터
    윈터스쿨 포스터로 되돌리려면 맨 아래 줄을 export const POSTER: Poster = POSTER_WINTER; 로 바꾸면 됩니다. */
 export const POSTER_WINTER: Poster = {
   id: "p1",
@@ -64,9 +64,9 @@ export const POSTER_WINTER: Poster = {
 
 export const POSTER_BRIEFING: Poster = {
   id: "p2",
-  image: "/poster-briefing-1121.jpg",
-  href: "https://forms.gle/84rcNtEtKq72u9Kt9",
-  alt: "2027학년도 수능 점수 분석 및 정시 합격점수 예측 긴급설명회 — 11월 21일(토) 오후 2시",
+  image: "/poster-briefing-1122-sw.jpg",
+  href: "https://forms.gle/8masCVR5voouEiG28",
+  alt: "2027학년도 수능 점수 분석 및 정시 합격점수 예측 긴급설명회 — 5A아카데미 수원, 11월 22일(일) 오후 2시",
   order: 1,
   active: true,
 };
